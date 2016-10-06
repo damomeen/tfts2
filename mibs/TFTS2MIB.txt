@@ -1,0 +1,286 @@
+
+TFTS2-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+	MODULE-IDENTITY, OBJECT-TYPE, Counter32
+		FROM SNMPv2-SMI
+	TruthValue
+		FROM SNMPv2-TC
+	Float32TC
+		FROM FLOAT-TC-MIB
+	MODULE-COMPLIANCE, OBJECT-GROUP
+		FROM SNMPv2-CONF
+	;
+
+TFTS2MIB MODULE-IDENTITY
+	LAST-UPDATED "201609281422Z"
+	ORGANIZATION "Akademia Gorniczo-Hutnicza"
+	CONTACT-INFO "tfts2@agh.edu.pl"
+	DESCRIPTION "Modul monitorowania systemu transferu czasu i czestotliwosci"
+	::= { iso(1) identified-organization(3) dod(6) internet(1) private(4) enterprise(1) agh(38980) tfts2(1234)}
+
+TFTS2MIBObjects OBJECT IDENTIFIER ::= { TFTS2MIB 1 }
+
+moduleInformation OBJECT IDENTIFIER ::= { TFTS2MIBObjects 1 }
+moduleParameters OBJECT IDENTIFIER ::= { TFTS2MIBObjects 2 }
+moduleNotifications OBJECT IDENTIFIER ::= { TFTS2MIBObjects 3 }
+
+-- moduleInformation
+
+moduleType OBJECT-TYPE
+	SYNTAX	OCTET STRING
+	MAX-ACCESS	read-only
+	STATUS	current
+	DESCRIPTION	"Module type: Local / Remote / SPBA"
+	::= { moduleInformation 1 }
+
+moduleVersion OBJECT-TYPE
+	SYNTAX	OCTET STRING
+	MAX-ACCESS	read-only
+	STATUS	current
+	DESCRIPTION	"Module version"
+	::= { moduleInformation 2 }
+
+moduleLocalization OBJECT-TYPE
+	SYNTAX	OCTET STRING
+	MAX-ACCESS	read-only
+	STATUS	current
+	DESCRIPTION	"Installation place"
+	::= { moduleInformation 3 }
+
+moduleLaastSysttemUpdate OBJECT-TYPE
+	SYNTAX	OCTET STRING
+	MAX-ACCESS	read-only
+	STATUS	current
+	DESCRIPTION	"Last system modification"
+	::= { moduleInformation 4 }
+
+moduleMode OBJECT-TYPE
+	SYNTAX	OCTET STRING
+	MAX-ACCESS	read-only
+	STATUS	current
+	DESCRIPTION	"Module operation mode: normal / service"
+	::= { moduleInformation 5 }
+
+-- localModuleParameters
+localModuleParameters OBJECT IDENTIFIER ::= { moduleParameters 1 }
+
+lcl10MHzInputSignalDetected OBJECT-TYPE
+	SYNTAX	TruthValue
+	MAX-ACCESS	read-only
+	STATUS	current
+	DESCRIPTION	""
+	::= { localModuleParameters 1 }
+	
+lclPPSInputSignalDetected OBJECT-TYPE
+	SYNTAX	TruthValue
+	MAX-ACCESS	read-only
+	STATUS	current
+	DESCRIPTION	""
+	::= { localModuleParameters 2 }
+
+lclPhaseCorrect OBJECT-TYPE
+	SYNTAX	TruthValue
+	MAX-ACCESS	read-only
+	STATUS	current
+	DESCRIPTION	""
+	::= { localModuleParameters 3 }
+
+lclFeedbackSignalDetected OBJECT-TYPE
+	SYNTAX	TruthValue
+	MAX-ACCESS	read-only
+	STATUS	current
+	DESCRIPTION	""
+	::= { localModuleParameters 4 }
+
+lclReceivedOpticalPower OBJECT-TYPE
+	SYNTAX	TruthValue
+	MAX-ACCESS	read-only
+	STATUS	current
+	DESCRIPTION	""
+	::= { localModuleParameters 5 }
+
+lclDelayCompensation OBJECT-TYPE
+	SYNTAX	Integer
+	MAX-ACCESS	read-only
+	STATUS	current
+	DESCRIPTION	"Percent value"
+	::= { localModuleParameters 6 }
+
+lclDelayCompensationThreshold OBJECT-TYPE
+	SYNTAX	Integer
+	MAX-ACCESS	read-only
+	STATUS	current
+	DESCRIPTION	"Threshold value"
+	::= { localModuleParameters 7 }
+
+lclDelayCompensationOK OBJECT-TYPE
+	SYNTAX	TruthValue
+	MAX-ACCESS	read-only
+	STATUS	current
+	DESCRIPTION	""
+	::= { localModuleParameters 8 }
+
+lclInnerCaseTemperature OBJECT-TYPE
+	SYNTAX	Float32TC
+	MAX-ACCESS	read-only
+	STATUS	current
+	DESCRIPTION	""
+	::= { localModuleParameters 9 }
+
+lclInnerCaseTemperatureThreshold OBJECT-TYPE
+	SYNTAX	Float32TC
+	MAX-ACCESS	read-only
+	STATUS	current
+	DESCRIPTION	"Temperature threshold value"
+	::= { localModuleParameters 10 }
+
+lclInnerCaseTemperatureOK OBJECT-TYPE
+	SYNTAX	TruthValue
+	MAX-ACCESS	read-only
+	STATUS	current
+	DESCRIPTION	""
+	::= { localModuleParameters 11 }
+
+-- remoteModuleParameters
+
+remoteModuleParameters OBJECT IDENTIFIER ::= { moduleParameters 2 }
+
+rmtRemoteModuleSynchronized OBJECT-TYPE
+	SYNTAX	TruthValue
+	MAX-ACCESS	read-only
+	STATUS	current
+	DESCRIPTION	""
+	::= { remoteModuleParameters 1 }
+
+rmtPLLControlVoltage OBJECT-TYPE
+	SYNTAX	Float32TC
+	MAX-ACCESS	read-only
+	STATUS	current
+	DESCRIPTION	""
+	::= { remoteModuleParameters 2 }
+	
+rmtPLLControlVoltageThreshold OBJECT-TYPE
+	SYNTAX	Float32TC
+	MAX-ACCESS	read-only
+	STATUS	current
+	DESCRIPTION	"PLL Control voltage threshold value"
+	::= { remoteModuleParameters 3 }
+
+rmtPLLControlVoltageOK OBJECT-TYPE
+	SYNTAX	TruthValue
+	MAX-ACCESS	read-only
+	STATUS	current
+	DESCRIPTION	""
+	::= { remoteModuleParameters 4 }
+
+rmtPPSSignalDetected OBJECT-TYPE
+	SYNTAX	TruthValue
+	MAX-ACCESS	read-only
+	STATUS	current
+	DESCRIPTION	""
+	::= { remoteModuleParameters 5 }
+
+rmtFeedbackSignalDetected OBJECT-TYPE
+	SYNTAX	TruthValue
+	MAX-ACCESS	read-only
+	STATUS	current
+	DESCRIPTION	""
+	::= { remoteModuleParameters 6 }
+
+rmtReceivedOpticalPower OBJECT-TYPE
+	SYNTAX	Float32TC
+	MAX-ACCESS	read-only
+	STATUS	current
+	DESCRIPTION	""
+	::= { remoteModuleParameters 7 }
+
+rmtReceivedOpticalPowerThreshold OBJECT-TYPE
+	SYNTAX	Float32TC
+	MAX-ACCESS	read-only
+	STATUS	current
+	DESCRIPTION	"Power threshold"
+	::= { remoteModuleParameters 8 }
+
+rmtReceivedOpticalPowerOK OBJECT-TYPE
+	SYNTAX	TruthValue
+	MAX-ACCESS	read-only
+	STATUS	current
+	DESCRIPTION	""
+	::= { remoteModuleParameters 9 }
+
+rmtInnerCaseTemperature OBJECT-TYPE
+	SYNTAX	Float32TC
+	MAX-ACCESS	read-only
+	STATUS	current
+	DESCRIPTION	""
+	::= { remoteModuleParameters 10 }
+
+rmtInnerCaseTemperatureThreshold OBJECT-TYPE
+	SYNTAX	Float32TC
+	MAX-ACCESS	read-only
+	STATUS	current
+	DESCRIPTION	"Temperature threshold"
+	::= { remoteModuleParameters 11 }
+
+rmtInnerCaseTemperature OBJECT-TYPE
+	SYNTAX	TruthValue
+	MAX-ACCESS	read-only
+	STATUS	current
+	DESCRIPTION	""
+	::= { remoteModuleParameters 12 }
+
+-- spbaModuleParameters
+
+spbaModuleParameters OBJECT IDENTIFIER ::= { moduleParameters 3 }
+
+spbaName OBJECT-TYPE
+	SYNTAX	OCTET STRING
+	MAX-ACCESS	read-only
+	STATUS	current
+	DESCRIPTION	"SPBA Type"
+	::= { spbaModuleParameters 1 }
+
+spbaMode OBJECT-TYPE
+	SYNTAX	OCTET STRING
+	MAX-ACCESS	read-only
+	STATUS	current
+	DESCRIPTION	""
+	::= { spbaModuleParameters 2 }
+
+spbaControl OBJECT-TYPE
+	SYNTAX	OCTET STRING
+	MAX-ACCESS	read-only
+	STATUS	current
+	DESCRIPTION	""
+	::= { spbaModuleParameters 3 }
+
+spbaLockedGain OBJECT-TYPE
+	SYNTAX	Float32TC
+	MAX-ACCESS	read-only
+	STATUS	current
+	DESCRIPTION	"Value in dBm"
+	::= { spbaModuleParameters 4 }
+
+spbaDir OBJECT-TYPE
+	SYNTAX	OCTET STRING
+	MAX-ACCESS	read-only
+	STATUS	current
+	DESCRIPTION	"E-W / W-E"
+	::= { spbaModuleParameters 5 }
+
+spbaPumpCurrent OBJECT-TYPE
+	SYNTAX	Float32TC
+	MAX-ACCESS	read-only
+	STATUS	current
+	DESCRIPTION	"Current value in mA"
+	::= { spbaModuleParameters 6 }
+
+spbaTemperature OBJECT-TYPE
+	SYNTAX	Float32TC
+	MAX-ACCESS	read-only
+	STATUS	current
+	DESCRIPTION	"Temperature in deg C"
+	::= { spbaModuleParameters 7 }
+
+END

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<status>
+	<module> <!-- Module information -->
+        <name>SPBA</name>  <!-- Module type: Local / Remote / SPBA -->
+		<version>4r3 </version> <!-- Module version -->
+        <localization>Konin</localization>  <!-- Installation place -->
+		<lastSystemUpdate>2014.12.20</lastSystemUpdate>  <!-- Last system modification -->
+		<mode>normal</mode> <!-- Module operation mode: normal / service -->
+    </module>
+	<params>
+	<!-- Module parameters -->
+        <param>
+            <name>SPBA Name</name> <!-- SPBA type -->
+            <value>L7_2.50M</value> <!--  -->            
+        </param>
+		<param>
+            <name>Mode</name> <!-- Parameters name -->
+            <value>ConstGain</value> <!--   -->            
+        </param>
+		<param>
+            <name>Control</name> <!-- Parameters name -->
+            <value>Software</value> <!-- Software /   -->            
+        </param>
+		<param>
+            <name>Locked Gain</name> <!-- Parameters name -->
+            <value>+11.03dBm </value> <!--  -->            
+        </param>
+		<param>
+            <name>Dir</name> <!-- Parameters name -->
+            <value>E-W </value> <!-- E-W / W-E   -->            
+        </param>
+		<param>
+			<name>PumpI</name> 
+			<!-- Parameters name -->
+			<value>89.5 mA</value> 
+			<!--  -->            
+        </param>
+		<param>
+            <name>Temp</name> <!-- Parameters name -->
+            <value>28.62C</value> <!--  -->            
+        </param>		
+	</params>
+</status>
