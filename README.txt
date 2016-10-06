@@ -17,7 +17,9 @@ tfts2
 
 1. Overview
 
-'tfts2' subagent plugin for NET-SNMP.
+'tfts2' is a subagent AgentX plugin for NET-SNMP. 
+
+'tfts2' reads status parametes values from xmls files and register them in Net-SNMP agent MIB.
     
     
 2. Installation
